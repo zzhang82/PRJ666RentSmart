@@ -14,3 +14,18 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+const kijiji = require("kijiji-scraper");
+ 
+// Scrape using returned promise
+kijiji.Ad.Get("<Kijiji ad URL>").then(function(ad) {
+    // Use the ad object
+    console.log(ad.title);
+}).catch(console.error);
+ 
+// Scrape using optional callback paramater
+kijiji.Ad.Get("<Kijiji ad URL>", function(err, ad) {
+    if (!err) {
+        // Use the ad object
+        console.log(ad.title);
+    }
+});
